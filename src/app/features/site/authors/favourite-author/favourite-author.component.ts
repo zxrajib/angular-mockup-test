@@ -25,15 +25,4 @@ export class FavouriteAuthorComponent implements OnInit {
     this.mapped = Object.keys(this.oldItem).map((key) => this.oldItem[key]);
     console.log("this.oldItem", this.mapped);
   }
-
-  removeFovourite(item: any) {
-    let oldItem: any = JSON.parse(`${localStorage.getItem("item")}`);
-    if (oldItem === undefined || oldItem === null) {
-      return;
-    }
-    try {
-      delete oldItem[item._id];
-      localStorage.setItem("item", JSON.stringify(oldItem));
-    } catch (error) {}
-  }
 }

@@ -4,7 +4,7 @@
   background: #fff;
   width: 260px;
   height: 100%;
-  top: 80px;
+  top: 0;
   z-index: 10;
   padding-top: 10px;
   background: #fff;
@@ -15,7 +15,7 @@
   padding-bottom: 80px;
 }
 .mainDashboardSec {
-  margin-top: 80px;
+  margin-top: 0px;
 }
 .dashboardPageWrapper {
   margin-left: 260px;

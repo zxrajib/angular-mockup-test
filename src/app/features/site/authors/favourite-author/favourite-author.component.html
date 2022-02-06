@@ -1,2 +1,6 @@
 <p>favourite-author works!</p>
-<app-list-item [itemData]="item" *ngFor="let item of mapped"></app-list-item>
+<app-list-item
+  [itemData]="item"
+  [isFavourite]="true"
+  *ngFor="let item of mapped"
+></app-list-item>

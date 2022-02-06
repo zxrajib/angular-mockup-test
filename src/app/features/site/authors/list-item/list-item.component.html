@@ -1,12 +1,18 @@
 <!-- <pre>
   {{ itemData | json }}
 </pre> -->
-<ul>
-  <li>ID:{{ itemData._id }}</li>
-  <li>name:{{ itemData.name }}</li>
-  <li>Bio:{{ itemData.bio }}</li>
-  <li>Link:{{ itemData.link }}</li>
-</ul>
-<button (click)="addFovourite(itemData)">Add Fourite</button>
-<button (click)="removeFovourite(itemData)">Remove Fourite</button>
-<hr />
+<ng-container *ngIf="isShow">
+  <ul>
+    <li>ID:{{ itemData._id }}</li>
+    <li>name:{{ itemData.name }}</li>
+    <li>Bio:{{ itemData.bio }}</li>
+    <li>Link:{{ itemData.link }}</li>
+  </ul>
+  <button (click)="addFovourite(itemData)" *ngIf="!findItem(itemData._id)">
+    Add Fourite
+  </button>
+  <button (click)="removeFovourite(itemData)" *ngIf="findItem(itemData._id)">
+    Remove Fourite
+  </button>
+  <hr />
+</ng-container>
