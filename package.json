@@ -8,6 +8,8 @@
     "dev": "ng serve --host 0.0.0.0 --port 5001 --disable-host-check",
     "dev:prod": "ng serve --host 0.0.0.0 --disable-host-check --configuration production=true",
     "watch": "ng build --watch --configuration development",
+    "prod": "ng build --configuration production",
+    "staging": "ng build --configuration=staging",
     "test": "ng test"
   },
   "private": true,
