@@ -1,6 +1,7 @@
 <!-- {{ authors | json }} -->
 
-<h1>Author list</h1>
+<h1 class="text-center">Author list</h1>
+<hr />
 <app-list-item
   [itemData]="item"
   *ngFor="let item of authors | paginate: config; index as i"
