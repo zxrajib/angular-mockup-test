@@ -1,2 +1,19 @@
 <!-- {{ authors | json }} -->
-<app-list-item [itemData]="item" *ngFor="let item of authors"></app-list-item>
+
+<h1>Author list</h1>
+<app-list-item
+  [itemData]="item"
+  *ngFor="let item of authors | paginate: config; index as i"
+></app-list-item>
+<div class="text-right">
+  <pagination-controls
+    (pageChange)="pageChanged($event)"
+    (pageBoundsCorrection)="pageChanged($event)"
+    previousLabel="Previous"
+    nextLabel="Next"
+    screenReaderPaginationLabel="Pagination"
+    screenReaderPageLabel="page"
+    screenReaderCurrentLabel="You're on page"
+  >
+  </pagination-controls>
+</div>

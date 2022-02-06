@@ -11,7 +11,7 @@ import { AuthorService } from "../sevices/author.service";
 export class ListComponent implements OnInit {
   public authors: Author[] = [];
   public config: any;
-
+  public sl: number = 0;
   constructor(private authorService: AuthorService, private router: Router) {
     this.config = {
       itemsPerPage: 10,
@@ -25,15 +25,26 @@ export class ListComponent implements OnInit {
     this.getAllAuthorlist();
   }
   getAllAuthorlist() {
-    const start = this.config.start;
+    const skip = this.config.itemsPerPage * (this.config.currentPage - 1);
     const limit = this.config.itemsPerPage;
     this.authorService
-      .authorList(start, limit)
+      .authorList(limit, skip)
       .subscribe((author: Record<string, any>) => {
-        console.log(author);
+        this.sl = (this.config.currentPage - 1) * this.config.itemsPerPage;
+        this.config.totalItems = author["totalCount"];
         this.authors = author["results"];
-
-        // this.authors = author.results;
+        console.log(this.authors);
+        console.log(this.config.totalItems);
       });
+  }
+  pageChanged(event: any) {
+    this.config.currentPage = event;
+    this.config.start =
+      (this.config.currentPage - 1) * this.config.itemsPerPage;
+    this.ngOnInit();
+  }
+  onChange(itemsLimit: any) {
+    this.config.itemsPerPage = itemsLimit;
+    this.ngOnInit();
   }
 }
